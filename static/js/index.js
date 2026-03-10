@@ -20,6 +20,23 @@ const camera = new THREE.PerspectiveCamera(
    10000
 );
 
+const defaultCameraPosition = new THREE.Vector3(0, 210, 400);
+const defaultCameraTarget = new THREE.Vector3(0, 205, 0);
+
+function resetCamera() {
+
+   camera.position.copy(defaultCameraPosition);
+
+   controls.target.copy(defaultCameraTarget);
+
+   camera.lookAt(defaultCameraTarget);
+
+   controls.update();
+
+   console.log("Camera reset");
+
+}
+
 /* =========================
    RENDERER
 ========================= */
@@ -59,6 +76,30 @@ const transformControls = new TransformControls(camera, renderer.domElement);
 scene.add(transformControls);
 transformControls.setMode("rotate");
 
+transformControls.addEventListener("objectChange", () => {
+
+   if (!liveMirrorEnabled) return;
+
+   const rightBone = transformControls.object;
+   if (!rightBone) return;
+
+   if (!rightBone.name.includes("Right")) return;
+
+   const leftName = rightBone.name.replace("Right", "Left");
+   const leftBone = model.getObjectByName(leftName);
+
+   if (!leftBone) return;
+
+   const r = rightBone.rotation;
+
+   leftBone.rotation.set(
+      r.x,
+      -r.y,
+      -r.z
+   );
+
+});
+
 transformControls.addEventListener("dragging-changed", function (event) {
 
    controls.enabled = !event.value;
@@ -91,6 +132,43 @@ let islSentence = "";
 let idleEnabled = true;
 const defaultPose = {};
 let playingAnimation = false;
+let liveMirrorEnabled = false;
+
+/* =========================
+   BONE CONTROLLER VARIABLES
+========================= */
+
+const boneSelect = document.getElementById("boneSelect");
+
+const xSlider = document.getElementById("xSlider");
+const ySlider = document.getElementById("ySlider");
+const zSlider = document.getElementById("zSlider");
+
+const xVal = document.getElementById("xVal");
+const yVal = document.getElementById("yVal");
+const zVal = document.getElementById("zVal");
+
+const copyBoneBtn = document.getElementById("copyBoneJson");
+const mirrorBtn = document.getElementById("mirrorRightToLeft");
+const copyHandsPoseBtn = document.getElementById("copyHandsPose");
+
+let selectedBone = null;
+
+
+const toggleMirrorBtn = document.getElementById("toggleMirror");
+
+toggleMirrorBtn?.addEventListener("click", () => {
+
+   liveMirrorEnabled = !liveMirrorEnabled;
+
+   toggleMirrorBtn.textContent = liveMirrorEnabled
+      ? "Live Mirror ON"
+      : "Live Mirror OFF";
+
+   console.log("Live Mirror:", liveMirrorEnabled);
+
+});
+
 /* =========================
    SET DEFAULT POSE
 ========================= */
@@ -437,6 +515,7 @@ document.getElementById("btnLANGUAGE").onclick = () => playISLSequence(["LANGUAG
 document.getElementById("btnYES").onclick = () => playISLSequence(["YES"]);
 document.getElementById("btnNO").onclick = () => playISLSequence(["NO"]);
 
+document.getElementById("resetCameraBtn")?.addEventListener("click", resetCamera);
 
 document.getElementById("resetPose")?.addEventListener("click", resetPoseInstant);
 
@@ -459,6 +538,45 @@ function applyIdleMovement() {
 
    spine.rotation.x = Math.sin(time * 2) * 0.02;
    hips.rotation.y = Math.sin(time * 0.8) * 0.01;
+}
+
+/* =========================
+   LIVE MIRROR
+========================= */
+function liveMirrorRightToLeft() {
+
+   if (!model || !liveMirrorEnabled) return;
+
+   model.traverse((rightBone) => {
+
+      if (!rightBone.isBone) return;
+
+      if (
+         !rightBone.name.includes("RightHand") &&
+         !rightBone.name.includes("RightForeArm") &&
+         !rightBone.name.includes("RightArm") &&
+         !rightBone.name.includes("RightThumb") &&
+         !rightBone.name.includes("RightIndex") &&
+         !rightBone.name.includes("RightMiddle") &&
+         !rightBone.name.includes("RightRing") &&
+         !rightBone.name.includes("RightPinky")
+      ) return;
+
+      const leftName = rightBone.name.replace("Right", "Left");
+      const leftBone = model.getObjectByName(leftName);
+
+      if (!leftBone) return;
+
+      const r = rightBone.rotation;
+
+      leftBone.rotation.set(
+         r.x,
+         -r.y,
+         -r.z
+      );
+
+   });
+
 }
 
 /* =========================
@@ -495,26 +613,6 @@ toggleBtn?.addEventListener("click", () => {
    }
 
 });
-
-/* =========================
-   BONE CONTROLLER VARIABLES
-========================= */
-
-const boneSelect = document.getElementById("boneSelect");
-
-const xSlider = document.getElementById("xSlider");
-const ySlider = document.getElementById("ySlider");
-const zSlider = document.getElementById("zSlider");
-
-const xVal = document.getElementById("xVal");
-const yVal = document.getElementById("yVal");
-const zVal = document.getElementById("zVal");
-
-const copyBoneBtn = document.getElementById("copyBoneJson");
-const mirrorBtn = document.getElementById("mirrorRightToLeft");
-
-let selectedBone = null;
-
 
 /* =========================
    POPULATE BONE DROPDOWN
@@ -726,26 +824,28 @@ mirrorBtn?.addEventListener("click", () => {
 
       if (!rightBone.isBone) return;
 
-      if (!rightBone.name.includes("RightHand") &&
+      if (
+         !rightBone.name.includes("RightHand") &&
          !rightBone.name.includes("RightForeArm") &&
-         !rightBone.name.includes("RightArm")) return;
+         !rightBone.name.includes("RightArm")
+      ) return;
 
       const leftName = rightBone.name.replace("Right", "Left");
       const leftBone = model.getObjectByName(leftName);
 
       if (!leftBone) return;
 
-      const q = rightBone.quaternion.clone();
+      const r = rightBone.rotation;
 
-      // Mirror across body (invert X axis)
-      q.x *= -1;
-      q.w *= -1;
-
-      leftBone.quaternion.copy(q);
+      leftBone.rotation.set(
+         r.x,
+         -r.y,
+         -r.z
+      );
 
    });
 
-   console.log("Mirrored Right → Left (Quaternion)");
+   console.log("Mirrored CURRENT pose Right → Left");
 
 });
 

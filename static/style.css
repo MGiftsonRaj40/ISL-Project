@@ -1,80 +1,303 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #333333;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* =========================================================
+   UI DESIGN VARIABLES
+========================================================= */
+
+:root {
+
+    /* COLORS */
+
+    --bg-main: #230000;
+    --panel-bg: #00000062;
+    --panel-bg-strong: #000000bf;
+
+    --text-main: #ffffff;
+    --text-muted: #bdbdbd;
+
+    --primary: #fe3a3a;
+    --primary-hover: #e01f1f;
+
+    --word-bg: #444;
+    --word-active: #f32121;
+
+    /* EFFECTS */
+
+    --blur: 10px;
+    --shadow-soft: 0 4px 12px #00000059;
+
+    /* BORDERS */
+
+    --radius-small: 6px;
+    --radius-medium: 10px;
+    --radius-large: 14px;
+
+    /* SPACING */
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 20px;
+
+    /* PANEL WIDTHS */
+
+    --panel-width: 380px;
+    --bone-panel-width: 250px;
+
+    /* FONT */
+
+    --font-main: Arial, Helvetica, sans-serif;
+
 }
+
+
+body {
+    margin: 0;
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TOP INPUT PANEL
+========================================================= */
 
 .container {
-    background: #ffffff00;
-    backdrop-filter: blur(3px);
-    padding: 30px 10px 10px;
-    color: #ffffff;
-    border-radius: 10px;
-    width: 400px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: absolute;
+    top: var(--space-lg);
+    left: var(--space-lg);
+    width: var(--panel-width);
+    padding: var(--space-lg);
+    background: var(--panel-bg);
+    border-radius: var(--radius-large);
+    backdrop-filter: blur(var(--blur));
+    box-shadow: var(--shadow-soft);
+    z-index: 10;
 }
 
-input {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 10px;
+.container h2 {
+    margin: 0 0 var(--space-md);
+    font-size: 20px;
 }
+
+
+/* INPUT */
+
+.container input {
+    width: 70%;
+    padding: 10px;
+    border: none;
+    border-radius: var(--radius-small);
+    margin-right: var(--space-sm);
+}
+
+
+/* =========================================================
+   BUTTON SYSTEM
+========================================================= */
 
 button {
-    padding: 10px 15px;
-    background: #007bff;
-    color: white;
+    padding: 8px 12px;
     border: none;
+    border-radius: var(--radius-small);
+    background: var(--primary);
+    color: var(--text-main);
+    font-weight: 600;
     cursor: pointer;
+    transition: all .2s ease;
 }
 
 button:hover {
-    background: #0056b3;
+    background: var(--primary-hover);
+    transform: scale(1.05);
 }
+
+
+/* =========================================================
+   OUTPUT WORDS
+========================================================= */
 
 .output {
-    margin-top: 20px;
-    font-weight: bold;
+    margin-top: var(--space-md);
 }
 
+.output span {
+    display: inline-block;
+    margin: var(--space-xs);
+    padding: 6px 10px;
+    background: var(--word-bg);
+    border-radius: var(--radius-small);
+    font-size: 14px;
+}
+
+.output span.active {
+    background: var(--word-active);
+}
+
+
+/* =========================================================
+   THREE.JS VIEWER
+========================================================= */
+
 #viewer {
-    width: 1000px;
-    height: 500px;
-    margin: auto;
-    padding-top: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   MAIN MENU PANEL
+========================================================= */
+
+.mainMenu {
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--panel-bg);
+    border-radius: var(--radius-large);
+    backdrop-filter: blur(var(--blur));
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+#islForm {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+/* AUTO RESET */
+
+#resetCameraBtn,
+#resetPose {
+    background: transparent;
+    color: var(--text-muted);
+    background-color: #360000a6;
+    font-size: 12px;
+    padding: 4px 8px;
+    border: 1px solid var(--text-muted);
+    border-radius: var(--radius-small);
 }
 
 .reset {
-    width: fit-content;
-    max-width: 100px;
-    height: fit-content;
     display: flex;
-    flex-direction: column;
+    gap: var(--space-lg);
+    font-size: 14px;
 }
 
-label {
+.reset input {
+    margin-right: var(--space-xs);
+}
+
+
+/* GESTURE BUTTON GRID */
+
+.gestureButtons {
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    gap: var(--space-sm);
+}
+
+
+/* SYSTEM BUTTONS */
+
+.systemButtons {
     display: flex;
-    margin-left: 10px;
-    font-size: 12px;
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
 }
 
-#autoResetOn,
-#autoResetOff {
-    width: 20px;
+
+/* BONE PANEL TOGGLE BUTTON */
+
+.panelToggle {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    padding: 8px 14px;
+    background: var(--primary);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-soft);
+    z-index: 20;
 }
 
-.output span{
-    margin:6px;
-    padding:5px 10px;
-    background:#eee;
-    border-radius:4px;
+.panelToggle:hover {
+    background: var(--primary-hover);
 }
 
-.output span.active{
-    background:#2196f3;
-    color:white;
+
+/* BONE CONTROL PANEL */
+
+#boneControlPanel {
+    position: absolute;
+    top: 60px;
+    right: var(--space-lg);
+    width: var(--bone-panel-width);
+    padding: var(--space-md);
+    background: var(--panel-bg-strong);
+    border-radius: var(--radius-medium);
+    backdrop-filter: blur(var(--blur));
+    box-shadow: var(--shadow-soft);
+    font-family: monospace;
+    display: none;
+    z-index: 15;
+}
+
+
+/* DROPDOWN */
+
+#boneSelect {
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border-radius: var(--radius-small);
+    margin-bottom: var(--space-sm);
+}
+
+
+/* SLIDERS */
+
+#boneControlPanel input[type="range"] {
+    width: 100%;
+    margin-bottom: var(--space-xs);
+}
+
+
+/* SLIDER VALUE */
+
+#boneControlPanel span {
+    float: right;
+    color: var(--text-muted);
+}
+
+
+/* PANEL BUTTONS */
+
+#boneControlPanel button {
+    width: 100%;
+    margin-top: var(--space-xs);
+}
+
+
+/* SCROLLBAR (OPTIONAL) */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
 }

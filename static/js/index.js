@@ -8,7 +8,7 @@ import { TransformControls } from "https://unpkg.com/three@0.160.0/examples/jsm/
 ========================= */
 const container = document.getElementById("viewer");
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x1a1a1a);
+scene.background = new THREE.Color(0x230000);
 
 /* =========================
    CAMERA

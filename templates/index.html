@@ -3,13 +3,20 @@
 
 <head>
     <title>Sign Language Translation Platform</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="data:,">
+
 </head>
 
 <body>
 
+    <!-- =========================
+        TOP INPUT PANEL
+========================= -->
+
     <div class="container">
+
         <h2>Sign Language Translation Platform</h2>
 
         <form id="islForm">
@@ -17,91 +24,91 @@
             <button type="submit">Convert to ISL</button>
         </form>
 
-        <div class="output" id="outputDiv">
-            <!-- ISL result will appear here -->
-        </div>
+        <div class="output" id="outputDiv"></div>
+
     </div>
 
-    <script>
-        const form = document.getElementById("islForm");
-        const input = document.getElementById("textInput");
-        const outputDiv = document.getElementById("outputDiv");
 
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault(); // prevent page reload
-
-            const text = input.value.trim();
-            if (!text) return;
-
-            const response = await fetch("/convert", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ text })
-            });
-
-            const data = await response.json();
-            const islWords = data.isl.split(" ");
-
-            outputDiv.innerHTML = islWords
-                .map(w => `<span>${w}</span>`)
-                .join(" ");
-
-            if (typeof playISLSequence === "function") {
-                playISLSequence(islWords);
-            }
-        });
-    </script>
+    <!-- =========================
+        THREE.JS VIEWER
+========================= -->
 
     <div id="viewer"></div>
 
-    <div class="reset">
-        <label style="color:white; font-family:sans-serif;">
-            <input type="radio" name="autoReset" id="autoResetOn" checked>
-            Auto Reset ON
-        </label>
 
-        <label style="color:white; font-family:sans-serif; margin-left:10px;">
-            <input type="radio" name="autoReset" id="autoResetOff">
-            Auto Reset OFF
-        </label>
+    <!-- =========================
+        MAIN CONTROL MENU
+========================= -->
+
+    <div class="mainMenu">
+
+        <!-- Auto reset -->
+
+        <div class="reset">
+
+            <label>
+                <input type="radio" name="autoReset" id="autoResetOn" checked>
+                Auto Reset ON
+            </label>
+
+            <label>
+                <input type="radio" name="autoReset" id="autoResetOff">
+                Auto Reset OFF
+            </label>
+
+        </div>
+
+
+        <!-- Gesture buttons -->
+
+        <div class="gestureButtons">
+
+            <button id="btnME">ME</button>
+            <button id="btnGO">GO</button>
+            <button id="btnSCHOOL">SCHOOL</button>
+            <button id="btnHello">HELLO</button>
+
+            <button id="btnSIGN">SIGN</button>
+            <button id="btnLANGUAGE">LANGUAGE</button>
+            <button id="btnYES">YES</button>
+            <button id="btnNO">NO</button>
+
+        </div>
+
+
+        <!-- System buttons -->
+
+        <div class="systemButtons">
+            <button id="resetPose">Reset Pose</button>
+            <button id="resetCameraBtn">Reset Camera</button>
+        </div>
+
     </div>
 
-    <button id="btnME">ME</button>
-    <button id="btnGO">GO</button>
-    <button id="btnSCHOOL">SCHOOL</button>
-    <button id="btnHello">HELLO</button>
-    <button id="btnSIGN">SIGN</button>
-    <button id="btnLANGUAGE">LANGUAGE</button>
-    <button id="btnYES">YES</button>
-    <button id="btnNO">NO</button>
 
-    <button id="toggleBonePanel" style="
-position:absolute;
-top:20px;
-right:20px;
-z-index:1000;
-padding:6px 10px;
-cursor:pointer;
-">
+    <!-- =========================
+        BONE PANEL BUTTON
+========================= -->
+
+    <button id="toggleBonePanel" class="panelToggle">
         Show Panel
     </button>
 
-    <div id="boneControlPanel" style="
-position:absolute;
-top:60px;
-right:20px;
-background:#2222222c;
-padding:15px;
-color:white;
-font-family:monospace;
-width:250px;
-border-radius:8px;
-display:none;
-">
+
+    <!-- =========================
+        BONE CONTROL PANEL
+========================= -->
+
+    <div id="boneControlPanel">
+
+        <!-- Bone selector -->
 
         <select id="boneSelect"></select>
 
+
         <br><br>
+
+        <!-- Rotation sliders -->
 
         X: <span id="xVal">0</span>
         <input id="xSlider" type="range" min="-3.14" max="3.14" step="0.01">
@@ -116,7 +123,10 @@ display:none;
         Z: <span id="zVal">0</span>
         <input id="zSlider" type="range" min="-3.14" max="3.14" step="0.01">
 
+
         <br><br>
+
+        <!-- Copy pose -->
 
         <button id="copyBoneJson">Copy Bone JSON</button>
 
@@ -124,17 +134,67 @@ display:none;
 
         <button id="copyHandsPose">Copy Both Hands Pose</button>
 
+
         <br><br>
+
+        <!-- Mirror -->
 
         <button id="mirrorRightToLeft">Mirror Right → Left</button>
         <button id="toggleMirror">Live Mirror OFF</button>
 
+
         <br><br>
 
+        <!-- Reset -->
         <button id="resetPose">Reset Pose</button>
         <button id="resetCameraBtn">Reset Camera</button>
 
     </div>
+
+
+    <!-- =========================
+        FORM SCRIPT
+========================= -->
+
+    <script>
+
+        const form = document.getElementById("islForm");
+        const input = document.getElementById("textInput");
+        const outputDiv = document.getElementById("outputDiv");
+
+        form.addEventListener("submit", async (e) => {
+
+            e.preventDefault();
+
+            const text = input.value.trim();
+            if (!text) return;
+
+            const response = await fetch("/convert", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text })
+            });
+
+            const data = await response.json();
+
+            const islWords = data.isl.split(" ");
+
+            outputDiv.innerHTML = islWords
+                .map(w => `<span>${w}</span>`)
+                .join(" ");
+
+            if (typeof playISLSequence === "function") {
+                playISLSequence(islWords);
+            }
+
+        });
+
+    </script>
+
+
+    <!-- =========================
+        THREE JS IMPORT MAP
+========================= -->
 
     <script type="importmap">
 {
@@ -143,8 +203,12 @@ display:none;
     "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
   }
 }
-
 </script>
+
+
+    <!-- =========================
+        MAIN THREE SCRIPT
+========================= -->
 
     <script type="module" src="{{ url_for('static', filename='js/index.js') }}"></script>
 

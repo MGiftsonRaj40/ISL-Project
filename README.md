@@ -167,22 +167,5 @@ This project is developed as a **Final Year Project (FYP)** focusing on:
 GitHub
 [https://github.com/MGiftsonRaj40](https://github.com/MGiftsonRaj40)
 
----
-
-✅ This version is:
-
-* **Cleaner for GitHub**
-* **More professional for evaluation**
-* Includes your **speech feature**
-* Better structured for **open-source readability**
-
----
-
-If you want, I can also give you a **🔥 "GitHub-level README upgrade"** with:
-
-* badges
-* demo video section
-* architecture diagram
-* installation guide
-
-That would make your repo look **like a professional open-source AI project**.
+Website
+[https://hello-giftson.web.app/](https://hello-giftson.web.app/)

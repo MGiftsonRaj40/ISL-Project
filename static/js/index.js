@@ -519,11 +519,20 @@ document.getElementById("resetCameraBtn")?.addEventListener("click", resetCamera
 
 document.getElementById("resetPose")?.addEventListener("click", resetPoseInstant);
 
-document.getElementById("autoResetOn")?.addEventListener("change", () => {
-   autoResetEnabled = true;
-});
-document.getElementById("autoResetOff")?.addEventListener("change", () => {
-   autoResetEnabled = false;
+const autoResetToggle = document.getElementById("autoResetToggle");
+
+autoResetToggle?.addEventListener("click", () => {
+
+   autoResetEnabled = !autoResetEnabled;
+
+   autoResetToggle.textContent = autoResetEnabled
+      ? "Auto Reset: ON"
+      : "Auto Reset: OFF";
+
+   autoResetToggle.classList.toggle("active", autoResetEnabled);
+
+   console.log("Auto Reset:", autoResetEnabled);
+
 });
 
 function applyIdleMovement() {

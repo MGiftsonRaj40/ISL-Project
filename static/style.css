@@ -197,6 +197,32 @@ button:hover {
     margin-right: var(--space-xs);
 }
 
+.reset-btn {
+    padding: 8px 14px;
+    margin: 4px;
+    border: none;
+    border-radius: 6px;
+    background: #444;
+    color: white;
+    cursor: pointer;
+}
+
+.reset-btn.active {
+    background: #2ecc71;
+}
+
+#autoResetToggle {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    background: #444;
+    color: white;
+    border-radius: 6px;
+}
+
+#autoResetToggle.active {
+    background: #2ecc71;
+}
 
 /* GESTURE BUTTON GRID */
 

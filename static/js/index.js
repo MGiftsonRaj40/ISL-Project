@@ -447,6 +447,62 @@ document.getElementById("islForm").addEventListener("submit", async function (e)
 
 });
 
+
+const micBtn = document.getElementById("micBtn");
+const textInput = document.getElementById("textInput");
+
+const SpeechRecognition =
+   window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const micIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+<path d="M12 15a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v7a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2z"/>
+</svg>
+`;
+
+if (SpeechRecognition) {
+
+   const recognition = new SpeechRecognition();
+
+   recognition.lang = "en-IN";
+   recognition.continuous = false;
+   recognition.interimResults = false;
+
+   micBtn.addEventListener("click", () => {
+
+      recognition.start();
+
+      micBtn.innerHTML = micIcon;
+      micBtn.classList.add("pulsing");
+
+   });
+
+   recognition.onresult = (event) => {
+
+      const speechText = event.results[0][0].transcript;
+
+      textInput.value = speechText;
+
+      micBtn.innerHTML = micIcon;
+      micBtn.classList.remove("pulsing");
+
+      console.log("Speech:", speechText);
+
+   };
+
+   recognition.onend = () => {
+
+      micBtn.innerHTML = micIcon;
+      micBtn.classList.remove("pulsing");
+
+   };
+
+} else {
+
+   alert("Speech recognition not supported in this browser");
+
+}
+
 /* =========================
    PLAY ISL SEQUENCE
 ========================= */

@@ -1,3 +1,7 @@
+Here is a **clean rewritten and updated README** that reflects the improvements you added (speech input, better UI, gesture tools, etc.) and makes the project look **more professional for GitHub and academic review**.
+
+---
+
 # ISL-Project
 
 ### Indian Sign Language Translation Platform
@@ -8,9 +12,11 @@
 
 # 📌 Project Overview
 
-The **ISL Translation Platform** is a web-based system that converts **English text into Indian Sign Language (ISL)** using a **3D animated avatar**.
+The **Indian Sign Language (ISL) Translation Platform** is a web-based system that converts **English text or speech into Indian Sign Language** using a **3D animated avatar**.
 
-This platform helps improve communication between **hearing/speaking individuals and deaf or mute people** by visually translating text into sign language gestures.
+The platform aims to improve communication between **hearing individuals and people who are deaf or speech-impaired** by translating spoken or written language into **visual sign language gestures**.
+
+The system uses **Natural Language Processing (NLP)** and **3D animation technology** to generate realistic hand gestures performed by a digital avatar in real time.
 
 ---
 
@@ -33,45 +39,47 @@ This platform helps improve communication between **hearing/speaking individuals
 # 🎯 Objectives
 
 * Convert **English text into Indian Sign Language**
+* Support **speech-to-text input for translation**
 * Provide **real-time sign language animation**
-* Help communication for **deaf and speech-impaired users**
-* Create an **interactive 3D learning tool**
+* Improve accessibility for **deaf and speech-impaired users**
+* Create an **interactive learning and demonstration tool**
 
 ---
 
 # ⚙️ Technologies Used
 
-### Frontend
+## Frontend
 
 * HTML
 * CSS
 * JavaScript
-* Three.js
+* Three.js (3D rendering)
 
-### Backend
+## Backend
 
 * Python
 * Flask
 
-### NLP Processing
+## Natural Language Processing
 
 * NLTK
 
-### 3D Animation
+## 3D Animation
 
-* FBX Model
-* Mixamo Rig
-* Bone-based Animation System
+* FBX Character Model
+* Mixamo Rigging
+* Bone-based animation system
 
 ---
 
 # 🧠 System Workflow
 
-1. User enters text.
-2. Text is sent to **Flask backend**.
-3. NLP converts the sentence into **ISL format**.
-4. Words are returned to the frontend.
-5. The **3D avatar performs gestures**.
+1. The user enters **text or uses voice input**.
+2. The input is sent to the **Flask backend server**.
+3. NLP processing converts the sentence into **ISL word order**.
+4. The processed words are returned to the frontend.
+5. The **3D avatar performs sign gestures sequentially**.
+6. Each word is visually highlighted while its gesture is played.
 
 ---
 
@@ -104,24 +112,43 @@ ISL-Project
 
 # 🚀 Features
 
-* Text → ISL translation
-* 3D animated avatar
-* Real-time gesture animation
-* Gesture editor
-* Bone transform controls
+### Translation
+
+* English text → ISL translation
+* Speech-to-text input support
+* NLP-based ISL word ordering
+
+### 3D Animation
+
+* Real-time 3D avatar animation
+* Sequential gesture playback
+* Word highlighting during animation
+
+### Gesture Editing Tools
+
+* Bone control panel
+* Real-time bone rotation sliders
 * Pose export to JSON
-* Live mirroring of gestures
-* Camera & pose reset
+* Gesture mirroring (right ↔ left)
+* Gesture creation system
+
+### Interface Controls
+
+* Auto reset toggle
+* Camera reset
+* Pose reset
+* Gesture testing buttons
 
 ---
 
 # 💡 Future Improvements
 
-* Speech to Sign Language
+* Larger ISL vocabulary database
 * AI-based gesture generation
-* Mobile support
-* Larger ISL vocabulary
-* Real-time video translation
+* Real-time speech translation
+* Mobile and touch support
+* Continuous sign language animation
+* Integration with webcam gesture recognition
 
 ---
 
@@ -130,9 +157,10 @@ ISL-Project
 This project is developed as a **Final Year Project (FYP)** focusing on:
 
 * Natural Language Processing
-* Accessibility Technology
+* Assistive Technology
 * 3D Animation Systems
 * Human Computer Interaction
+* Accessibility Solutions
 
 ---
 
@@ -141,4 +169,24 @@ This project is developed as a **Final Year Project (FYP)** focusing on:
 **Mr. Nobody**
 
 GitHub
-https://github.com/MGiftsonRaj40
+[https://github.com/MGiftsonRaj40](https://github.com/MGiftsonRaj40)
+
+---
+
+✅ This version is:
+
+* **Cleaner for GitHub**
+* **More professional for evaluation**
+* Includes your **speech feature**
+* Better structured for **open-source readability**
+
+---
+
+If you want, I can also give you a **🔥 "GitHub-level README upgrade"** with:
+
+* badges
+* demo video section
+* architecture diagram
+* installation guide
+
+That would make your repo look **like a professional open-source AI project**.

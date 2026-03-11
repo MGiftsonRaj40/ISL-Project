@@ -1,7 +1,3 @@
-Here is a **clean rewritten and updated README** that reflects the improvements you added (speech input, better UI, gesture tools, etc.) and makes the project look **more professional for GitHub and academic review**.
-
----
-
 # ISL-Project
 
 ### Indian Sign Language Translation Platform

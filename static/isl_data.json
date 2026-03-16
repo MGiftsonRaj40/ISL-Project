@@ -2699,5 +2699,277 @@
         }
       }
     }
+  ],
+  "BAD": [
+    {
+      "mixamorig9LeftArm": {
+        "rotation": {
+          "x": 1.0230156251982139,
+          "y": 0.29938837079930036,
+          "z": 0.0
+        }
+      },
+      "mixamorig9LeftForeArm": {
+        "rotation": {
+          "x": 1.0029332835427873,
+          "y": -1.510891131744111,
+          "z": 0.0
+        }
+      },
+      "mixamorig9RightArm": {
+        "rotation": {
+          "x": 0.5029568311690243,
+          "y": -2.893674399465223,
+          "z": 0.0
+        }
+      },
+      "mixamorig9RightForeArm": {
+        "rotation": {
+          "x": -0.2715824603034701,
+          "y": 2.96151311126586,
+          "z": 0.0
+        }
+      },
+      "mixamorig9RightHandThumb1": {
+        "rotation": {
+          "x": 2.821415293385623,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandThumb2": {
+        "rotation": {
+          "x": 3.1122683264519257,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandThumb3": {
+        "rotation": {
+          "x": 3.0378212804150775,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandIndex1": {
+        "rotation": {
+          "x": 2.2057366197018915,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandIndex2": {
+        "rotation": {
+          "x": 2.34525901175138,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandIndex3": {
+        "rotation": {
+          "x": 2.841545831117779,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandMiddle1": {
+        "rotation": {
+          "x": 2.0668998967292764,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandMiddle2": {
+        "rotation": {
+          "x": 2.2984021418580527,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandMiddle3": {
+        "rotation": {
+          "x": 2.779311005171696,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandRing1": {
+        "rotation": {
+          "x": 1.9465780010309928,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandRing2": {
+        "rotation": {
+          "x": 2.402099619686792,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandRing3": {
+        "rotation": {
+          "x": 2.898777964024472,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandPinky1": {
+        "rotation": {
+          "x": 1.8040083776091926,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandPinky2": {
+        "rotation": {
+          "x": 2.6829054810172956,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandPinky3": {
+        "rotation": {
+          "x": 2.9883255761719663,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "mixamorig9LeftArm": {
+        "rotation": {
+          "x": 1.0255054553240421,
+          "y": 0.3400029563852658,
+          "z": 0.0
+        }
+      },
+      "mixamorig9LeftForeArm": {
+        "rotation": {
+          "x": 0.9962839328751436,
+          "y": -2.1937829675558733,
+          "z": 0.0
+        }
+      },
+      "mixamorig9RightArm": {
+        "rotation": {
+          "x": 1.055430840104497,
+          "y": -1.767613667309632,
+          "z": 0.0
+        }
+      },
+      "mixamorig9RightForeArm": {
+        "rotation": {
+          "x": 0.008824150626533637,
+          "y": 2.7862979218327766,
+          "z": 0.0
+        }
+      },
+      "mixamorig9RightHandThumb1": {
+        "rotation": {
+          "x": 2.721315320565122,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandThumb2": {
+        "rotation": {
+          "x": 3.0977968756049705,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandThumb3": {
+        "rotation": {
+          "x": 2.8676173149847948,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandIndex1": {
+        "rotation": {
+          "x": 2.709212388482496,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandIndex2": {
+        "rotation": {
+          "x": 2.7659970836797494,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandIndex3": {
+        "rotation": {
+          "x": 2.8021345174952144,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandMiddle1": {
+        "rotation": {
+          "x": 2.1766552865822333,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandMiddle2": {
+        "rotation": {
+          "x": 2.581781106127506,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandMiddle3": {
+        "rotation": {
+          "x": 2.936686490640821,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandRing1": {
+        "rotation": {
+          "x": 2.9023991233963127,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandRing2": {
+        "rotation": {
+          "x": 2.6494661648118973,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandRing3": {
+        "rotation": {
+          "x": 3.0050057904194873,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandPinky1": {
+        "rotation": {
+          "x": 2.9639821823080754,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandPinky2": {
+        "rotation": {
+          "x": 2.870864867625881,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "mixamorig9RightHandPinky3": {
+        "rotation": {
+          "x": 3.001365006920794,
+          "y": 0,
+          "z": 0
+        }
+      }
+    }
   ]
 }
